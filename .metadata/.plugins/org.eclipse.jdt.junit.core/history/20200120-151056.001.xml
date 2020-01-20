@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProductControllerUnitTest" project="ProductApp" tests="5" started="5" failures="1" errors="1" ignored="0">
+  <testsuite name="com.rakuten.training.spring.web.ProductControllerUnitTest" time="0.313" displayname="ProductControllerUnitTest" uniqueid="[engine:junit-vintage]/[runner:com.rakuten.training.spring.web.ProductControllerUnitTest]">
+    <testcase name="getProductById_Returns_Ok_With_Correct_Product_If_Found" classname="com.rakuten.training.spring.web.ProductControllerUnitTest" time="0.218" displayname="getProductById_Returns_Ok_With_Correct_Product_If_Found" uniqueid="[engine:junit-vintage]/[runner:com.rakuten.training.spring.web.ProductControllerUnitTest]/[test:getProductById_Returns_Ok_With_Correct_Product_If_Found(com.rakuten.training.spring.web.ProductControllerUnitTest)]"/>
+    <testcase name="addProduct_Return_InValid_if_product_qoh_price_is_lt_10000" classname="com.rakuten.training.spring.web.ProductControllerUnitTest" time="0.057" displayname="addProduct_Return_InValid_if_product_qoh_price_is_lt_10000" uniqueid="[engine:junit-vintage]/[runner:com.rakuten.training.spring.web.ProductControllerUnitTest]/[test:addProduct_Return_InValid_if_product_qoh_price_is_lt_10000(com.rakuten.training.spring.web.ProductControllerUnitTest)]"/>
+    <testcase name="addProduct_Returns_valid_id_If_Product_Is_Added" classname="com.rakuten.training.spring.web.ProductControllerUnitTest" time="0.016" displayname="addProduct_Returns_valid_id_If_Product_Is_Added" uniqueid="[engine:junit-vintage]/[runner:com.rakuten.training.spring.web.ProductControllerUnitTest]/[test:addProduct_Returns_valid_id_If_Product_Is_Added(com.rakuten.training.spring.web.ProductControllerUnitTest)]"/>
+    <testcase name="deleteProduct_successfullyDeletes" classname="com.rakuten.training.spring.web.ProductControllerUnitTest" time="0.018" displayname="deleteProduct_successfullyDeletes" uniqueid="[engine:junit-vintage]/[runner:com.rakuten.training.spring.web.ProductControllerUnitTest]/[test:deleteProduct_successfullyDeletes(com.rakuten.training.spring.web.ProductControllerUnitTest)]">
+      <failure>org.opentest4j.MultipleFailuresError: Multiple Failures (2 failures)
+	java.lang.NullPointerException: &lt;no message&gt;
+	org.mockito.exceptions.misusing.InvalidUseOfMatchersException: 
+Misplaced or misused argument matcher detected here:
+
+-&gt; at com.rakuten.training.spring.web.ProductControllerUnitTest.deleteProduct_successfullyDeletes(ProductControllerUnitTest.java:87)
+
+You cannot use argument matchers outside of verification or stubbing.
+Examples of correct usage of argument matchers:
+    when(mock.get(anyInt())).thenReturn(null);
+    doThrow(new RuntimeException()).when(mock).someVoidMethod(anyObject());
+    verify(mock).someMethod(contains("foo"))
+
+This message may appear after an NullPointerException if the last matcher is returning an object 
+like any() but the stubbed method signature expect a primitive argument, in this case,
+use primitive alternatives.
+    when(mock.get(any())); // bad use, will raise NPE
+    when(mock.get(anyInt())); // correct usage use
+
+Also, this error might show up because you use argument matchers with methods that cannot be mocked.
+Following methods *cannot* be stubbed/verified: final/private/equals()/hashCode().
+Mocking methods declared on non-public parent classes is not supported.
+
+	at org.junit.vintage.engine.execution.TestRun.getStoredResultOrSuccessful(TestRun.java:179)
+	at org.junit.vintage.engine.execution.RunListenerAdapter.fireExecutionFinished(RunListenerAdapter.java:211)
+	at org.junit.vintage.engine.execution.RunListenerAdapter.testFinished(RunListenerAdapter.java:177)
+	at org.junit.vintage.engine.execution.RunListenerAdapter.testFinished(RunListenerAdapter.java:76)
+	at org.junit.runner.notification.SynchronizedRunListener.testFinished(SynchronizedRunListener.java:56)
+	at org.junit.runner.notification.RunNotifier$7.notifyListener(RunNotifier.java:190)
+	at org.junit.runner.notification.RunNotifier$SafeNotifier.run(RunNotifier.java:72)
+	at org.junit.runner.notification.RunNotifier.fireTestFinished(RunNotifier.java:187)
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestFinished(EachTestNotifier.java:38)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:331)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:40)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.Iterator.forEachRemaining(Iterator.java:116)
+	at java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:80)
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:71)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:137)
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+
+</failure>
+    </testcase>
+    <testcase name="getProductById_Returns_Not_Found_If_product_Not_Found" classname="com.rakuten.training.spring.web.ProductControllerUnitTest" time="0.003" displayname="getProductById_Returns_Not_Found_If_product_Not_Found" uniqueid="[engine:junit-vintage]/[runner:com.rakuten.training.spring.web.ProductControllerUnitTest]/[test:getProductById_Returns_Not_Found_If_product_Not_Found(com.rakuten.training.spring.web.ProductControllerUnitTest)]">
+      <error>org.mockito.exceptions.misusing.MissingMethodInvocationException: 
+when() requires an argument which has to be 'a method call on a mock'.
+For example:
+    when(mock.getArticles()).thenReturn(articles);
+
+Also, this error might show up because:
+1. you stub either of: final/private/equals()/hashCode() methods.
+   Those methods *cannot* be stubbed/verified.
+   Mocking methods declared on non-public parent classes is not supported.
+2. inside when() you don't call method on mock but on some other object.
+
+	at com.rakuten.training.spring.web.ProductControllerUnitTest.getProductById_Returns_Not_Found_If_product_Not_Found(ProductControllerUnitTest.java:45)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:40)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.Iterator.forEachRemaining(Iterator.java:116)
+	at java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:80)
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:71)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:137)
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

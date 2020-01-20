@@ -1,0 +1,83 @@
+package com.rakuten.training.spring.service;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+import org.mockito.Mockito;
+
+import com.rakuten.training.spring.dal.ProductDAO;
+import com.rakuten.training.spring.domain.Product;
+
+public class ProductServiceImplTest {
+
+  @Test
+  public void addNewProduct_Return_Valid_Id_When_Product_value_GTeq_MINVALUE() {
+    // Arrange
+	  ProductServiceImpl service=new ProductServiceImpl();
+	  Product toBeAdded=new Product("test",100000,1);//notice 10000*1>=10000
+	  ProductDAO mockDAO=Mockito.mock(ProductDAO.class);
+	  Product saved=new Product("test",100000,1);
+	  saved.setId(1);
+	  Mockito.when(mockDAO.save(toBeAdded)).thenReturn(saved);
+	  service.setDao(mockDAO);
+    // Act
+	  int id=service.addNewProduct(toBeAdded);
+//Assert
+	  assertTrue(id>0);
+  }
+  @Test(expected = IllegalArgumentException.class)
+  public void addNewProduct_ThrowsWhenProductValueLTMinvalue()
+  {
+	  //arrange
+	  ProductServiceImpl service=new ProductServiceImpl();
+	  Product toBeAdded=new Product("test",9999,1);
+	  //act
+	  service.addNewProduct(toBeAdded);
+	  
+	 // assert
+  }
+  @Test
+  public void removeProduct_checks_if_product_of_price_and_qoh_is_lt_100000()
+  {
+	  //arrange
+	  ProductServiceImpl s=new ProductServiceImpl();
+	  Product ret=new Product("test",1000,9);
+	  ProductDAO mockDAO=Mockito.mock(ProductDAO.class);
+	  s.setDao(mockDAO);
+	  ret.setId(3);
+	  Mockito.when(mockDAO.findById(3)).thenReturn(ret);
+	  //act
+	  s.removeProduct(3);
+	  //assert
+	  Mockito.verify(mockDAO).deleteById(3);
+  }
+  @Test(expected = IllegalStateException.class)
+  public void removeProduct_checks_if_product_of_price_and_qoh_isgteq_1000000()
+  {
+	  //arrange
+	  Product ret=new Product("test",1000000000,1);
+	  ret.setId(3);
+	  ProductServiceImpl s=new ProductServiceImpl();
+	  ProductDAO mockDAO=Mockito.mock(ProductDAO.class);
+	  s.setDao(mockDAO);
+	  Mockito.when(mockDAO.findById(3)).thenReturn(ret);
+	  //act
+	  s.removeProduct(3);
+	  //assert
+	  
+  }
+  @Test(expected=NullPointerException.class)
+  public void removeProduct_checks_if_product_of_invalid_id_is_passed()
+  {
+	  Product ret=new Product("test",1000000000,1);
+	  ret.setId(3);
+	  ProductServiceImpl s=new ProductServiceImpl();
+	  ProductDAO mockDAO=Mockito.mock(ProductDAO.class);
+	  s.setDao(mockDAO);
+	  Mockito.when(mockDAO.findById(3)).thenReturn(ret);
+	  //act
+	  s.removeProduct(5);
+	  //assert
+	  
+  }
+}

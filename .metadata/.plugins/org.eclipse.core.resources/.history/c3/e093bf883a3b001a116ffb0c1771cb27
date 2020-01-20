@@ -1,0 +1,20 @@
+package com.rakuten.training.spring.service;
+
+import java.util.List;
+
+import com.rakuten.training.spring.domain.Product;
+import com.rakuten.training.spring.domain.Review;
+
+public interface ProductService {
+  int addNewProduct(Product toBeAdded);
+
+  void removeProduct(int id);
+
+  List<Product> findAll();
+
+  Product findById(int id);
+ // public List<Review> findallReviewsOfAProduct(int id);
+
+List<Review> findallReviewsOfAProduct(int id);
+public Review addReview(Review r,int id);
+}

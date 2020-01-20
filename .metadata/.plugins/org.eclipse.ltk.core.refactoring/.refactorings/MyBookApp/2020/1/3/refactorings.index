@@ -1,0 +1,5 @@
+1579154866811	Rename type 'BookApp'
+1579154910320	Rename compilation unit 'BookAppImpl.java'
+1579156464959	Delete element
+1579173634725	Extract interface 'PublisherDAO'
+1579187000387	Extract interface 'PublisherService'

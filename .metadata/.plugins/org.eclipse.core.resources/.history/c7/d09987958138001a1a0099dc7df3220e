@@ -1,0 +1,46 @@
+package com.rakuten.project.sl;
+
+import com.rakuten.project.domain.Book;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.rakuten.project.dal.BookAppDAO;
+@Service
+@Transactional
+public class BookServiceImpl implements BookService {
+  @Autowired BookAppDAO bk;
+
+  @Override
+  public int addNewBook(Book p) {
+    if (p.getNumpages() > 1000) throw new IllegalArgumentException("cant add more than 1000");
+    else 
+    {
+    	bk.save(p,1);//have to ask about this
+    	//have to ask about thisww
+    return p.getId();
+  }
+  }
+
+  @Override
+  public void removeBook(int id) {
+    Book c=bk.findById(id);
+    if (c.getGenre().equalsIgnoreCase("philosophy"))
+    	throw new IllegalArgumentException("cannot remove books of philosophy");
+    else
+    	bk.delete(id);
+  }
+
+  @Override
+  public Book findById1(int id) {
+    return bk.findById(id);
+  }
+
+@Override public int addNewBook(Book p){// TODO Auto-generated method stub
+return 0;}
+
+@Override public com.rakuten.project.domain.Book findById(int id){// TODO Auto-generated method stub
+return null;}
+}

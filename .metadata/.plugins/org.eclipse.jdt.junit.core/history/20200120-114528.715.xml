@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProductControllerUnitTest" project="ProductApp" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.rakuten.training.spring.web.ProductControllerUnitTest" time="0.267" displayname="ProductControllerUnitTest" uniqueid="[engine:junit-vintage]/[runner:com.rakuten.training.spring.web.ProductControllerUnitTest]">
+    <testcase name="getProductById_Returns_Ok_With_Correct_Product_If_Found" classname="com.rakuten.training.spring.web.ProductControllerUnitTest" time="0.267" displayname="getProductById_Returns_Ok_With_Correct_Product_If_Found" uniqueid="[engine:junit-vintage]/[runner:com.rakuten.training.spring.web.ProductControllerUnitTest]/[test:getProductById_Returns_Ok_With_Correct_Product_If_Found(com.rakuten.training.spring.web.ProductControllerUnitTest)]"/>
+  </testsuite>
+</testrun>

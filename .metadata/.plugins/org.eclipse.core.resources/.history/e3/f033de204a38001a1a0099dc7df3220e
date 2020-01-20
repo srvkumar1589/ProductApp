@@ -1,0 +1,3 @@
+package com.rakuten.training.spring.domain;
+
+public class Review {}

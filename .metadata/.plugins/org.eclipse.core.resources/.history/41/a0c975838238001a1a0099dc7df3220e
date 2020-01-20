@@ -1,0 +1,23 @@
+package com.rakuten.project;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import com.rakuten.project.ui.PublisherUI;
+
+@SpringBootApplication
+public class MyBookAppApplication {
+	public static void main(String[] args) {
+		ApplicationContext springContainer=SpringApplication.run(MyBookAppApplication.class, args);
+		PublisherUI ui=springContainer.getBean(PublisherUI.class);
+		ui.publisherConsoleUi();
+		//PublisherDAO dao=springContainer.getBean(PublisherDAO.class);
+		//Publisher pub=new Publisher("sourav","kolkata");
+		//BookAppDAO sample=springContainer.getBean(BookAppDAO.class);
+		//Publisher saved2=dao.save(pub);
+		//Book b=new Book("sourav","adventure",100,500);
+		//Book saved=sample.save(b,1);
+	}
+
+}

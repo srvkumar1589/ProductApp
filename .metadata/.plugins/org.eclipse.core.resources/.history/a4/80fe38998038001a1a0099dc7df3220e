@@ -1,0 +1,60 @@
+package com.rakuten.project.domain;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+@Entity
+public class Book {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
+	int id;
+	@Column
+	String name;
+	@Column
+	String genre;
+	@Column
+	int numpages;
+	@Column
+	int price;
+	@ManyToOne
+	@JoinColumn(name="PId")
+	Publisher pub;
+	public Book() {  }
+  public Book( String name, String genre, int numpages, int price) {
+    this.name = name;
+    this.genre = genre;
+    this.numpages = numpages;
+    this.price = price;
+  }
+public int getId() {
+return id;}
+public void setId(int id) {
+this.id = id;}
+public String getName() {
+return name;}
+public void setName(String name) {
+this.name = name;}
+public String getGenre() {
+return genre;}
+public void setGenre(String genre) {
+this.genre = genre;}
+public int getNumpages() {
+return numpages;}
+public void setNumpages(int numpages) {
+this.numpages = numpages;}
+public int getPrice() {
+return price;}
+public void setPrice(int price) {
+this.price = price;}
+public Publisher getPub() {
+return pub;}
+public void setPub(Publisher pub) {
+this.pub = pub;}
+  
+	
+}

@@ -1,0 +1,38 @@
+package com.rakuten.training.spring.service;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+import org.mockito.Mockito;
+
+import com.rakuten.training.spring.dal.ProductDAO;
+import com.rakuten.training.spring.domain.Product;
+
+public class ProductServiceImplTest {
+
+  @Test
+  public void addNewProduct_returnsvalid_Id_When_Product_value_GTeq_MINVALUE() {
+    // Arrange
+	  ProductServiceImpl service=new ProductServiceImpl();
+	  Product toBeAdded=new Product("test",10000,1);//notice 10000*1>=10000
+	  ProductDAO mockDAO=Mockito.mock(ProductDAO.class);
+	  Product saved=new Product("test",10000,1);
+	  saved.setId(1);
+	  Mockito.when(mockDAO.save(toBeAdded)).thenReturn(saved);
+    // Act
+	  int id=service.addNewProduct(toBeAdded);
+//Assert
+	  assertTrue(id>0);
+  }
+  @Test(expected = IllegalCallerException.class)
+  public void addNewProduct_ThrowsWhenProductValueLTMinvalue()
+  {
+	  //arrange
+	  ProductServiceImpl service=new ProductServiceImpl();
+	  Product toBeAdded=new Product("test",9999,1);
+	  //act
+	  service.addNewProduct(toBeAdded);
+	  
+	 // assert
+  }
+}

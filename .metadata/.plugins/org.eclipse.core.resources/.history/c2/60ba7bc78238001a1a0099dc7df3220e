@@ -1,0 +1,65 @@
+package com.rakuten.project.ui;
+
+import java.util.Scanner;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.rakuten.project.domain.Book;
+import com.rakuten.project.sl.BookService;
+//import com.rakuten.training.spring.domain.Product;
+//@Component
+public class BookUi {
+	@Autowired
+	BookService w;
+	public void bookConsoleUi()
+	{
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter choice 1. For Adding  2. For Removing" );
+		
+		while(true)
+		{
+			int ch=Integer.parseInt(s.nextLine());
+		switch(ch)
+		{
+		case 1:
+		{
+		 System.out.println("enter name");
+		    String name = s.nextLine();
+		    
+		    System.out.println("enter price");
+		    int price = Integer.parseInt(s.nextLine());
+		    
+		    System.out.println("enter genre");
+		    String genre = (s.nextLine());
+		    
+		    System.out.println("enter num pages" );
+		    int numpages=Integer.parseInt(s.nextLine());
+		    
+		    Book p = new Book(name, genre,numpages,price);
+		    int id = w.addNewBook(p);
+		    System.out.println("created book with id" + id);
+		    break;
+		}
+		case 2:
+		{
+			System.out.println("enter the id to be removed" ); 
+			int id=Integer.parseInt(s.nextLine());
+			System.out.println(w.findById(id)+"removed" ); 
+			w.removeBook(id);
+			break;
+		}
+		case 3:
+			System.exit(0);
+		case 4:
+		{
+			System.out.println("enter id" );
+			int id=Integer.parseInt(s.nextLine());
+			System.out.println("the product found"+w.findById(id).getName() ); 
+		}
+			
+		}
+		
+		}
+	}
+}

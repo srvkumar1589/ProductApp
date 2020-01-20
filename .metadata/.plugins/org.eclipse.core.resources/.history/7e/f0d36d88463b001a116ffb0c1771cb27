@@ -1,0 +1,13 @@
+package com.rakute.training.spring.web;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ProductControllerUnitTest {
+
+  @Test
+  public void test() {
+    fail("Not yet implemented");
+  }
+}

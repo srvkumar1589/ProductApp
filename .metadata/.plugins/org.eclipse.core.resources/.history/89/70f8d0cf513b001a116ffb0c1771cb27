@@ -1,0 +1,60 @@
+package com.rakuten.training.spring.web;
+import org.hamcrest.CoreMatchers;
+//import static org.springframework.
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import com.rakuten.training.spring.domain.Product;
+import com.rakuten.training.spring.service.ProductService;
+
+@RunWith(SpringRunner.class)
+@WebMvcTest({ProductController.class})
+public class ProductControllerUnitTest {
+  @Autowired MockMvc mockmvc;
+  @MockBean
+ProductService service;
+  @Test
+  public void getProductById_Returns_Ok_With_Correct_Product_If_Found()throws Exception {
+	  //Arrange
+	  Product found=new Product("test",133.0f,100);int id=1;
+	  found.setId(id);
+	  Mockito.when(service.findById(id)).thenReturn(found);
+	  //Act and Assert
+	  mockmvc.perform(MockMvcRequestBuilders.get("/products/{id}",id))
+			  .andExpect(MockMvcResultMatchers.status().isOk())
+			  .andExpect(MockMvcResultMatchers.jsonPath("$.id", CoreMatchers.is(id)));
+  }
+  @Test
+  public void getProductById_Returns_Not_Found_If_product_Not_Found()throws Exception
+  
+  {
+	  //Arrange
+	  Product p=new Product("test",1000,12);int id=1;
+	p.setId(id);
+	Mockito.when(service.findById(id)).thenReturn(p);
+	//Act and Assert
+	mockmvc.perform(MockMvcRequestBuilders.get("/products/{id}",id+1))
+	.andExpect(MockMvcResultMatchers.status().isNotFound());
+  }
+  @Test
+  public void addProduct_Returns_valid_id_If_Product_Is_Added()throws Exception
+  {
+	  //Arrange
+	  Product p=new Product("test",1000.0f,12);int id=1;
+		p.setId(id);
+		Mockito.when(service.addNewProduct(p)).thenReturn(p.getId());
+		//Act
+		//service.addNewProduct(p);
+		
+		mockmvc.perform(MockMvcRequestBuilders.post("/products")).andExpect(MockMvcResultMatchers.status().isCreated());
+		Mockito.verify(service).addNewProduct(p);
+  }
+}

@@ -1,0 +1,45 @@
+package com.rakuten.project;
+
+import java.util.Scanner;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import com.rakuten.project.ui.BookUi;
+import com.rakuten.project.ui.PublisherUI;
+
+@SpringBootApplication
+public class MyBookAppApplication {
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		ApplicationContext springContainer=SpringApplication.run(MyBookAppApplication.class, args);
+		while(true)
+		{
+		int ch=Integer.parseInt(s.nextLine());
+		System.out.println("1 for book 2 for publisher" ); 
+			switch(ch)
+			{
+			case 1:
+			{
+		PublisherUI ui=springContainer.getBean(PublisherUI.class);
+		ui.publisherConsoleUi();
+		break;
+		//PublisherDAO dao=springContainer.getBean(PublisherDAO.class);
+		//Publisher pub=new Publisher("sourav","kolkata");
+		//BookAppDAO sample=springContainer.getBean(BookAppDAO.class);
+		//Publisher saved2=dao.save(pub);
+		//Book b=new Book("sourav","adventure",100,500);
+		//Book saved=sample.save(b,1);
+			}
+			case 2:
+			{
+				BookUi ui=springContainer.getBean(BookUi.class);
+				ui.bookConsoleUi();
+			}
+				
+			}
+	}
+
+}
+}

@@ -1,0 +1,44 @@
+package com.rakuten.project.dal;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.rakuten.project.domain.Book;
+import com.rakuten.project.domain.Publisher;
+//@Repository
+//@Transactional
+public class BookAppDAOImpl implements BookAppDAO{
+	@Autowired
+	EntityManager em;
+  @Override
+  public Book save(Book toBeSaved,int id) {
+       	Publisher p=em.find(Publisher.class, id);
+       	toBeSaved.setPub(p);
+       	em.persist(toBeSaved);
+        return toBeSaved;
+  }
+
+  @Override
+  public List<Book> findAll() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Book findById(int id) {
+	  return em.find(Book.class, id)  ;  
+    
+  }
+
+  @Override
+  public void delete(int id) {
+	  Book p=em.find(Book.class, id);
+	   em.remove(p);    
+  }
+	
+}
